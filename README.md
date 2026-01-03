@@ -11,7 +11,7 @@ npm run dev
 ## Deploy to GitHub Pages
 1) Edit `vite.config.js` and set `base` to your repo name:
 ```js
-base: "/YOUR_REPO_NAME/",
+base: "/portfolio/",
 ```
 
 2) Deploy:
