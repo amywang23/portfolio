@@ -9,15 +9,15 @@ import {
 } from "recharts";
 
 const PROFILE = {
-  name: "Alex Chen",
-  title: "Full-Stack Engineer • Performance + Product",
-  location: "NYC • Open to remote",
+  name: "Amy Wang",
+  title: "Generalist Software Engineer • Performance + Product",
+  location: "Northern Virginia • Open to relocation and remote",
   tagline:
     "I build fast, reliable, user-obsessed systems—then measure the results like a scientist with a keyboard.",
-  email: "alex@example.com",
+  email: "amywangc@umich.edu",
   links: {
-    github: "https://github.com/",
-    linkedin: "https://www.linkedin.com/",
+    github: "https://github.com/amywang23",
+    linkedin: "https://www.linkedin.com/in/amywangc/",
     resume: "#",
   },
   highlights: [
@@ -248,58 +248,63 @@ function Particles() {
   );
 }
 
-function TopBar({ theme, setTheme, onOpenPalette }) {
+function MinimalHeader({ theme, setTheme }) {
   return (
-    <div style={{
-      position: "sticky", top: 0, zIndex: 20,
-      backdropFilter: "blur(10px)",
-      background: "rgba(0,0,0,0.18)",
-      borderBottom: "1px solid var(--border)"
-    }}>
-      <div className="container" style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "12px 0"
-      }}>
-        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div className="pill" style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <Sparkles size={16} />
-            <span style={{ fontWeight: 650, letterSpacing: "-0.01em" }}>{PROFILE.name}</span>
-          </div>
-          <button
-            className="pill"
-            onClick={onOpenPalette}
-            title="Command Palette"
-            style={{ display: "flex", gap: 10, alignItems: "center", cursor: "pointer" }}
-          >
-            <Search size={16} />
-            <span className="muted">Navigate</span>
-            <span className="kbd">Ctrl/⌘ K</span>
-          </button>
-        </div>
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 20,
+        backdropFilter: "blur(10px)",
+        background: "color-mix(in srgb, var(--bg) 70%, transparent)",
+        borderBottom: "1px solid var(--border)",
+      }}
+    >
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "14px 0",
+        }}
+      >
+        {/* Logo = Home */}
+        <button
+          onClick={() => document.getElementById("top")?.scrollIntoView({ behavior: "smooth" })}
+          style={{
+            border: "none",
+            background: "transparent",
+            padding: 0,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "baseline",
+            gap: 10,
+          }}
+          aria-label="Go to top"
+        >
+          <span style={{ fontWeight: 850, letterSpacing: "-0.02em", fontSize: 16 }}>
+            {PROFILE.name}
+          </span>
+          <span className="muted" style={{ fontSize: 13 }}>
+            portfolio
+          </span>
+        </button>
 
-        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <a className="pill" href={PROFILE.links.github} target="_blank" rel="noreferrer" title="GitHub">
-            <Github size={16} />
-          </a>
-          <a className="pill" href={PROFILE.links.linkedin} target="_blank" rel="noreferrer" title="LinkedIn">
-            <Linkedin size={16} />
-          </a>
-          <a className="pill" href={`mailto:${PROFILE.email}`} title="Email">
-            <Mail size={16} />
-          </a>
-
-          <button
-            className="pill"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
-            title="Toggle theme"
-          >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            <span className="muted" style={{ fontSize: 13 }}>{theme === "dark" ? "Light" : "Dark"}</span>
-          </button>
-        </div>
+        {/* Theme toggle only */}
+        <button
+          className="pill"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          <span className="muted" style={{ fontSize: 13 }}>
+            {theme === "dark" ? "Light" : "Dark"}
+          </span>
+        </button>
       </div>
-    </div>
+    </header>
   );
 }
 
@@ -308,101 +313,35 @@ function Hero() {
     <section id="top" style={{ position: "relative", padding: "60px 0 26px 0" }}>
       <Particles />
 
-      <div className="container">
-        <div className="grid" style={{ gridTemplateColumns: "1.2fr 0.8fr", alignItems: "start" }}>
-          <motion.div
-            className="card glow"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{ padding: 22 }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-              <div className="pill" style={{ display: "inline-flex", gap: 8, alignItems: "center" }}>
-                <Code2 size={16} />
-                <span style={{ fontWeight: 600 }}>{PROFILE.title}</span>
-              </div>
-              <div className="pill muted">{PROFILE.location}</div>
-            </div>
-
-            <div style={{ marginTop: 14 }}>
-              <h1 className="h1">
-                Shipping <span style={{
-                  background: "linear-gradient(90deg, rgba(113,72,255,1), rgba(0,255,187,1), rgba(255,96,151,1))",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent"
-                }}>measurable</span> products.
-              </h1>
-              <p className="muted" style={{ fontSize: 16, lineHeight: 1.55, margin: "12px 0 0 0" }}>
-                {PROFILE.tagline}
-              </p>
-            </div>
-
-            <div className="hr" />
-
-            <div className="grid" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-              {PROFILE.highlights.map((h) => (
-                <div key={h.label} className="pill" style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                  <div style={{
-                    width: 34, height: 34, borderRadius: 12,
-                    display: "grid", placeItems: "center",
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid var(--border)"
-                  }}>
-                    {h.icon}
-                  </div>
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>{h.kpi}</div>
-                    <div className="muted" style={{ fontSize: 13, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                      {h.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
-              <a className="pill" href="#projects" onClick={(e) => { e.preventDefault(); smoothScrollTo("projects"); }}
-                 style={{ display: "inline-flex", gap: 10, alignItems: "center" }}>
-                <Rocket size={16} />
-                <span style={{ fontWeight: 650 }}>See projects</span>
-              </a>
-              <a className="pill" href={PROFILE.links.resume} style={{ display: "inline-flex", gap: 10, alignItems: "center" }}>
-                <FileText size={16} />
-                <span style={{ fontWeight: 650 }}>Resume</span>
-                <ExternalLink size={14} className="muted" />
-              </a>
-              <a className="pill" href={`mailto:${PROFILE.email}`} style={{ display: "inline-flex", gap: 10, alignItems: "center" }}>
-                <Mail size={16} />
-                <span style={{ fontWeight: 650 }}>Email me</span>
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="card"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            style={{ padding: 18 }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <Terminal size={18} />
-              <div style={{ fontWeight: 700 }}>Build log</div>
-              <div className="muted" style={{ marginLeft: "auto", fontSize: 13 }}>live-ish</div>
-            </div>
-
-            <BuildLog />
-
-            <div className="hr" />
-
-            <div className="muted" style={{ fontSize: 13, lineHeight: 1.5 }}>
-              This panel is intentionally “engineer-coded UI”: small details, clear states,
-              and subtle motion. Recruiters notice polish even when they don’t know why.
-            </div>
-          </motion.div>
-        </div>
+      <div className="container" style={{ padding: "90px 0 40px" }}>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ maxWidth: 820 }}
+        >
+          <div className="muted" style={{ fontSize: 14, marginBottom: 12 }}>
+            {PROFILE.title} • {PROFILE.location}
+          </div>
+        
+          <h1 className="h1" style={{ marginBottom: 18 }}>
+            Building thoughtful software
+            <span style={{ opacity: 0.6 }}>—fast, clean, measured.</span>
+          </h1>
+        
+          <p className="muted" style={{ fontSize: 18, lineHeight: 1.6, margin: 0 }}>
+            {PROFILE.tagline}
+          </p>
+        
+          <div style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
+            <a className="pill" href="#projects" onClick={(e) => { e.preventDefault(); smoothScrollTo("projects"); }}>
+              Selected work
+            </a>
+            <a className="pill" href={`mailto:${PROFILE.email}`}>Email</a>
+            <a className="pill" href={PROFILE.links.github} target="_blank" rel="noreferrer">GitHub</a>
+            <a className="pill" href={PROFILE.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -965,11 +904,7 @@ export default function App() {
         opacity: 0.9
       }} />
 
-      <TopBar
-        theme={theme}
-        setTheme={setTheme}
-        onOpenPalette={() => setPaletteOpen(true)}
-      />
+      <MinimalHeader theme={theme} setTheme={setTheme} />
 
       <Hero />
       <Projects />
