@@ -1,0 +1,16 @@
+.projectRow {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.projectRow:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+[data-theme="light"] .projectRow:hover {
+  background: rgba(0,0,0,0.04);
+}
