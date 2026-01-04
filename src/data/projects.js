@@ -11,6 +11,7 @@ export const PROJECTS = [
     ],
     metrics: { perf: 92, ux: 88, reliability: 95, complexity: 62 },
     links: { demo: "https://example.com", code: "https://github.com/" },
+    media: { src: "media/nebula.jpg", alt: "NebulaOps preview" },
   },
   {
     id: "atlas",
@@ -24,6 +25,7 @@ export const PROJECTS = [
     ],
     metrics: { perf: 86, ux: 80, reliability: 97, complexity: 74 },
     links: { demo: "https://example.com", code: "https://github.com/" },
+    media: { src: "media/atlas.jpg", alt: "Atlas Billing preview" },
   },
   {
     id: "quanta",
@@ -37,5 +39,6 @@ export const PROJECTS = [
     ],
     metrics: { perf: 84, ux: 83, reliability: 90, complexity: 69 },
     links: { demo: "https://example.com", code: "https://github.com/" },
+    media: { src: "media/quanta.jpg", alt: "Quanta Search preview" },
   },
 ];

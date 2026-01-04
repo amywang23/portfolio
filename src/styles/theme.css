@@ -1,16 +1,87 @@
-.projectRow {
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 16px;
+.projectsLayout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .projectsLayout {
+    grid-template-columns: 1fr;
+  }
+  .projectsPreview {
+    display: none; /* optional: hide sticky preview on mobile */
+  }
+}
+
+.projectsList {
+  display: grid;
+  gap: 26px;
+}
+
+.projectChapter {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 90px;
+}
+
+.projectChapter.isActive .projectTitle {
+  opacity: 1;
+}
+
+.projectTitleBtn {
+  width: 100%;
+  border: none;
   background: transparent;
+  padding: 0;
   cursor: pointer;
   text-align: left;
 }
 
-.projectRow:hover {
-  background: rgba(255,255,255,0.03);
+.projectTitleRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
 }
 
-[data-theme="light"] .projectRow:hover {
-  background: rgba(0,0,0,0.04);
+.projectTitle {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  opacity: 0.92;
+}
+
+.projectBlurb {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+.projectMetaRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.projectsPreview {
+  position: relative;
+}
+
+.previewCard {
+  position: sticky;
+  top: 88px; /* should match your sticky header height */
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 14px;
+  background: rgba(255,255,255,0.02);
+}
+
+.previewMedia {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 4 / 3;
 }
